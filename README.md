@@ -70,7 +70,7 @@ Use the file name of the file for the `.env` file `MONGODB_TLS_CA_FILE` field.
 
 ## Establish SSH Tunnel
 
-Before running the example code, you need to establish an SSH tunnel to the DocumentDB instance. This may be done with a command like the following:
+Before running the example code, using mongosh or Compass, you need to establish an SSH tunnel to the DocumentDB instance. This may be done with a command like the following:
 
 ```
 ssh -i bastion-server-pem-file-name -N -L 27017:documentdb-cluster-url:27017 bastion-server-url
