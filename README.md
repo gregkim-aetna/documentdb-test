@@ -10,7 +10,7 @@ A DocumentDB database does not allow direct connections to it from outside the V
 
 The example code expects the `prescriptions` collection to exist in the database.
 
-The example `prescriptions` collection shows how to use DocumentDB JSON schema validation and is created with the following command in mongosh after selecting a database:
+The example `prescriptions` collection shows how to use DocumentDB JSON Schema validation and is created with the following command in mongosh after selecting a database:
 
 Before running the example code, create the `prescriptions` collection.
 
