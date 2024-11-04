@@ -2,14 +2,14 @@ import {MongoClient} from 'mongodb';
 
 let client: MongoClient;
 
-export async function getClient(): Promise<MongoClient> {
+export async function getMongoClient(): Promise<MongoClient> {
     if (!client) {
         const host = process.env.MONGODB_HOST || '';
         const port = '27017';
         const username = encodeURIComponent(process.env.MONGODB_USERNAME || '');
         const password = encodeURIComponent(process.env.MONGODB_PASSWORD || '');
 
-        let uri = `mongodb://${username}:${password}@${host}:${port}/`
+        let uri = `mongodb://${username}:${password}@${host}:${port}`
             + '?replicaSet=rs0' // Required by DocumentDB.
             + '&retryWrites=false' // Required by DocumentDB. DocumentDB doesn’t support retryable writes.
             + '&ssl=true' // Required by DocumentDB. DocumentDB requires SSL/TLS for connections.
