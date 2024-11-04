@@ -10,7 +10,7 @@ A DocumentDB database does not allow direct connections to it from outside the V
 
 The example code expects the `prescriptions` collection to exist in the database.
 
-The example collection shows how to use DocumentDB JSON schema validation and is created with this command in Mongosh after selecting a database:
+The example `prescriptions` collection shows how to use DocumentDB JSON schema validation and is created with the following command in Mongosh after selecting a database:
 
 Before running the example code, create the `prescriptions` collection.
 
@@ -41,9 +41,9 @@ db.createCollection("prescriptions", {
 })
 ```
 
-## Configure Example
+## Configure the Examples
 
-Besides the compiled Typescript code, the example code expects two files to exist in the `dist` folder.
+Some configuration is needed before running the example code. Besides the compiled Typescript code, the example code expects two files to exist in the `dist` folder.
 
 ### .env File
 
@@ -62,7 +62,7 @@ Set the fields prefixed with `your-` to the appropriate values for your environm
 
 The `MONGODB_HOST` and `MONGODB_USE_SSH_TUNNEL` values are correct for connecting through an SSH tunnel from your local computer.
 
-### SSL/TLS Certificate Authority File
+### SSL/TLS Certificate Authority (CA) File
 
 Copy the SSL/TLS Certificate Authority (CA) file for your DocumentDB instance to the `dist` folder. In AWS examples, this file is often shown as `global-bundle.pem`.
 
@@ -82,8 +82,26 @@ Tne file specification of the bastion server PEM file downloaded to your compute
 
 ### documentdb-cluster-url
 
-The DocumentDB URL for the database. As an example, for my test database the URL was `aetna-test-docdb.cluster-cwmerlckvzbk.us-west-2.docdb.amazonaws.com`.
+The DocumentDB cluster URL for the database. As an example, for my test database the URL was `aetna-test-docdb.cluster-cwmerlckvzbk.us-west-2.docdb.amazonaws.com`.
 
 ### bastion-server-url
 
 The URL of the bastion server you wish to use to connect to the database. As an example, for my test bastion server the URL was `ubuntu@ec2-35-87-54-208.us-west-2.compute.amazonaws.com`.
+
+## About the Examples
+
+`index.js` runs both the Mongo and Mongoose examples.
+
+### Mongo Examples
+
+An `index.js` scoped client is created.
+
+The client is passed to the CRUD examples.
+
+CRUD methods are run against a collection.
+
+### Mongoose Examples
+
+A Mongoose global client is created.
+
+CRUD methods are run against a Mongoose model.
