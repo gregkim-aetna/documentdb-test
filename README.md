@@ -10,7 +10,7 @@ A DocumentDB database does not allow direct connections to it from outside the V
 
 The example code expects the `prescriptions` collection to exist in the database.
 
-The example `prescriptions` collection shows how to use DocumentDB JSON schema validation and is created with the following command in Mongosh after selecting a database:
+The example `prescriptions` collection shows how to use DocumentDB JSON schema validation and is created with the following command in mongosh after selecting a database:
 
 Before running the example code, create the `prescriptions` collection.
 
@@ -105,3 +105,33 @@ CRUD methods are run against a collection.
 A Mongoose global client is created.
 
 CRUD methods are run against a Mongoose model.
+
+## Additional Information
+
+### Client Tools
+
+#### MongoDB shell
+
+The MongoDB shell (mongosh) lets you interact with DocumentDB from the command line. Instructions on how to install and use the shell are at [Welcome to MongoDB Shell](https://www.mongodb.com/docs/mongodb-shell/).
+
+You can connect to a DocumentDB database through an SSH tunnel with a command like the following:
+
+```
+./mongosh --ssl --sslAllowInvalidHostnames --sslCAFile your-tls-cs-pem-file-name --username your-username --password your-password
+```
+
+#### MongoDB GUI
+
+Compass is MongoDB’s GUI for MongoDB. Instructions on how to install and use Compass are at [Compass. The GUI for MongoDB.](https://www.mongodb.com/products/tools/compass).
+
+You can connect to a DocumentDB database through an SSH tunnel with a connection string like the following:
+
+```
+mongodb://your-username:your-password@127.0.0.1:27017?ssl=true&directConnection=true
+```
+
+Then under `Advanced Connection Options`, `TLS/SSL` tab do the following:
+
+- Set the `Certificate Authority (.pem)` file.
+
+- Check `tlsAllowInvalidHostnames`.
