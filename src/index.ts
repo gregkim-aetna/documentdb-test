@@ -1,15 +1,20 @@
 import dotenv from 'dotenv';
 
 import {getClient} from './mongodb-client.js';
+import {crudExample} from './mongodb-crud.js';
 
 dotenv.config();
 
-const client = await getClient();
+const mongoClient = await getClient();
 
-process.on("SIGINT", async () => {
-    if (client) {
-        await client.close();
-        console.log("Connection to DocumentDB closed.");
+await crudExample(mongoClient);
+
+process.on('SIGINT', async () => {
+    if (mongoClient) {
+        await mongoClient.close();
+        console.log('Mongo connection to DocumentDB closed.');
         process.exit(0);
     }
 });
+
+process.exit(0);

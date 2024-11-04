@@ -1,11 +1,11 @@
-import {MongoClient} from "mongodb";
+import {MongoClient} from 'mongodb';
 
 let client: MongoClient;
 
 export async function getClient(): Promise<MongoClient> {
     if (!client) {
         const host = process.env.MONGODB_HOST || '';
-        const port = "27017";
+        const port = '27017';
         const username = encodeURIComponent(process.env.MONGODB_USERNAME || '');
         const password = encodeURIComponent(process.env.MONGODB_PASSWORD || '');
 
@@ -22,7 +22,7 @@ export async function getClient(): Promise<MongoClient> {
         }
         client = new MongoClient(uri);
         await client.connect();
-        console.log("Connection to DocumentDB opened.");
+        console.log('Mongo connection to DocumentDB opened.');
     }
 
     return client;
