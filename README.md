@@ -43,7 +43,7 @@ db.createCollection("prescriptions", {
 
 ## Configure the Examples
 
-Some configuration is needed before running the example code. Besides the compiled Typescript code, the example code expects two files to exist in the `dist` folder.
+Some configuration is needed before running the example code. The example code expects two files to exist in the project top level folder.
 
 ### .env File
 
@@ -64,7 +64,7 @@ The `MONGODB_HOST` and `MONGODB_USE_SSH_TUNNEL` values are correct for connectin
 
 ### SSL/TLS Certificate Authority (CA) File
 
-Copy the SSL/TLS Certificate Authority (CA) file for your DocumentDB instance to the `dist` folder. In AWS examples, this file is often shown as `global-bundle.pem`.
+Copy the SSL/TLS Certificate Authority (CA) file for your DocumentDB instance to the project top level folder. In AWS examples, this file is often shown as `global-bundle.pem`.
 
 Use the file name of the file for the `.env` file `MONGODB_TLS_CA_FILE` field.
 
@@ -106,6 +106,18 @@ A Mongoose global client is created.
 
 CRUD methods are run against a Mongoose model.
 
+## Run the Examples
+
+The examples may be run with commands like the following:
+
+```
+npm i
+npm run build
+npm start
+```
+
+Hit CTRL-C to stop the application.
+
 ## Additional Information
 
 ### Client Tools
@@ -114,7 +126,7 @@ CRUD methods are run against a Mongoose model.
 
 The MongoDB shell (mongosh) lets you interact with DocumentDB from the command line. Instructions on how to install and use the shell are at [Welcome to MongoDB Shell](https://www.mongodb.com/docs/mongodb-shell/).
 
-You can connect to a DocumentDB database through an SSH tunnel with a command like the following:
+You can connect mongosh to a DocumentDB database through an SSH tunnel with a command like the following:
 
 ```
 ./mongosh --ssl --sslAllowInvalidHostnames --sslCAFile your-tls-cs-pem-file-name --username your-username --password your-password
@@ -124,7 +136,7 @@ You can connect to a DocumentDB database through an SSH tunnel with a command li
 
 Compass is MongoDB’s GUI for MongoDB. Instructions on how to install and use Compass are at [Compass. The GUI for MongoDB.](https://www.mongodb.com/products/tools/compass).
 
-You can connect to a DocumentDB database through an SSH tunnel with a connection string like the following:
+You can connect Compass to a DocumentDB database through an SSH tunnel with a connection string like the following:
 
 ```
 mongodb://your-username:your-password@127.0.0.1:27017?ssl=true&directConnection=true
