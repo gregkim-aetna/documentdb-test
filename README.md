@@ -99,6 +99,8 @@ Before running the example code, using mongosh or Compass, you need to establish
 ssh -i bastion-server-pem-file-name -N -L 27017:documentdb-cluster-url:27017 bastion-server-url
 ```
 
+Once you run the above command, the SSH tunnel will remain open until you CTRL-C or otherwise stop the command.
+
 ### bastion-server-pem-file-name
 
 Tne file specification of the bastion server PEM file downloaded to your computer.
