@@ -2,13 +2,13 @@
 
 This repo provides examples of connecting to a DocumentDB database and doing CRUD operations using Mongo and Mongoose styles.
 
-## Background
+## Prepare Database
+
+### Bastion Server
 
 A DocumentDB database does not allow direct connections to it from outside the VPC in which in resides. The example code uses an SSH tunnel through a bastion server to connect to the database. Thus, in order to run the example code from your local computer, you need both a DocumentDB database and a bastion server in the same VPC to be available.
 
 The bastion server can be pretty easy to set up. I started an Ubuntu server in the VPC. Then when creating the DocumentDB cluster, the creation wizard gives an option to connect a bastion server. The creation wizard took care of all the AWS security settings between the two. Once the wizard was done creating the DocumentDB cluster, I could SSH tunnel to the new DocumentDB cluster. I did not need to install any software on the bastion server or do any configuration for it.
-
-## Prepare Database
 
 ### Prepare Collection
 
