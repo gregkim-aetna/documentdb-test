@@ -14,7 +14,7 @@ The bastion server can be pretty easy to set up. I started an Ubuntu server in t
 
 The example code expects the `prescriptions` collection to exist in the database.
 
-The example `prescriptions` collection shows how to use DocumentDB JSON Schema validation and is created with the following command in mongosh after selecting a database:
+The following example `prescriptions` collection code shows how to use DocumentDB JSON Schema validation. The code may be run with mongosh after selecting a database.
 
 Before running the example code, create the `prescriptions` collection.
 
