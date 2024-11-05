@@ -6,7 +6,11 @@ This repo provides examples of connecting to a DocumentDB database and doing CRU
 
 A DocumentDB database does not allow direct connections to it from outside the VPC in which in resides. The example code uses an SSH tunnel through a bastion server to connect to the database. Thus, in order to run the example code from your local computer, you need both a DocumentDB database and a bastion server in the same VPC to be available.
 
-## Prepare Collection
+The bastion server can be pretty easy to set up. I started an Ubuntu server in the VPC. Then when creating the DocumentDB cluster, the creation wizard gives an option to connect a bastion server. The creation wizard took care of all the AWS security settings between the two. Once the wizard was done creating the DocumentDB cluster, I could SSH tunnel to the new DocumentDB cluster. I did not need to install any software on the bastion server or do any configuration for it.
+
+## Prepare Database
+
+### Prepare Collection
 
 The example code expects the `prescriptions` collection to exist in the database.
 
@@ -19,7 +23,7 @@ db.createCollection("prescriptions", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["name", "dosage", "dosageUnit"],
+      required: ["name", "dosage", "dosageUnit", "deleteDate"],
       properties: {
         name: {
           bsonType: "string",
@@ -34,12 +38,31 @@ db.createCollection("prescriptions", {
           bsonType: "string",
           enum: ["mg", "pill"],
           description: "Drug dosage unit"
+        },
+        deleteDate: {
+          bsonType: "date",
+          description: "Date record will be deleted"
         }
       }
     }
   }
 })
 ```
+
+### Prepare TTL Index
+
+To support automatic document deletion when a date/time arrives, we set up a TTL index for the collection.
+
+Before running the example code, create the TTL index.
+
+```
+db.prescriptions.createIndex(
+  { "deleteDate": 1 },
+  { expireAfterSeconds: 0 }
+)
+```
+
+The example code deletes the document shortly after creating it. To see automatic document deletion, comment out the deletion part of the example code. Note that DocumentDB's TTL process is not instantaneous and may take some time (usually within a minute) after the deletion date is reached to delete the document.
 
 ## Configure the Examples
 
@@ -116,7 +139,7 @@ npm run build
 npm start
 ```
 
-Hit CTRL-C to stop the application.
+Hit CTRL-C to stop the application and see the termination example.
 
 ## Additional Information
 

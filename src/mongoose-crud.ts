@@ -4,7 +4,8 @@ export async function mongooseCrudExample(): Promise<void> {
     const prescription = new Prescription({
         name: 'drug-2',
         dosage: 1,
-        dosageUnit: 'pill'
+        dosageUnit: 'pill',
+        deleteDate: new Date(Date.now() + 10 * 1000)
     });
     await prescription.save();
     console.log('Prescription created');

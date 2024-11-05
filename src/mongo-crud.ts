@@ -8,7 +8,8 @@ export async function mongoCrudExample(mongoClient: MongoClient): Promise<void> 
     await prescriptions.insertOne({
         name: 'drug-1',
         dosage: 1,
-        dosageUnit: 'pill'
+        dosageUnit: 'pill',
+        deleteDate: new Date(Date.now() + 10 * 1000)
     });
     console.log('Prescription created');
 

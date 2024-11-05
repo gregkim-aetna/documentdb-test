@@ -17,6 +17,11 @@ const prescriptionSchema = new mongoose.Schema({
         required: true,
         enum: ['mg', 'pill'],
         description: 'Drug dosage unit'
+    },
+    deleteDate: {
+        type: Date,
+        required: true,
+        description: "Date record will be deleted"
     }
 });
 
