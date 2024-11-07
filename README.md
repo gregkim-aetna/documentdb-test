@@ -62,6 +62,8 @@ db.prescriptions.createIndex(
 )
 ```
 
+`expireAfterSeconds` configures a delay after the delete date/time arrives before the deletion will occur. For example, this could be used to allow a creation date to have a TTL index and have records be deleted an hour after creation.
+
 The example code deletes the document shortly after creating it. To see automatic document deletion, comment out the deletion part of the example code. Note that DocumentDB's TTL process is not instantaneous and may take some time (usually within a minute) after the deletion date is reached to delete the document.
 
 ## Configure the Examples
