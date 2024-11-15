@@ -2,6 +2,8 @@
 
 This repo provides examples of connecting to a DocumentDB database and doing CRUD operations using Mongo and Mongoose styles.
 
+Note that the repo code is using a bastion server to connect to its example DocumentDB database. We are not doing this in our actual dev, QA and prod environments. Zscaler (or something else) is working some VPN magic to allow us to reach our DocumentDB database in its VPC directly. Thus, the connection examples in the code need to be considered in that light. Some of the connection settings are only needed when using a bastion server.
+
 ## Prepare Database
 
 ### Bastion Server
